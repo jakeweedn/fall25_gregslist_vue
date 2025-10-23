@@ -17,7 +17,9 @@
           <RouterLink :to="{ name: 'Car Listings' }" title="Go to the car listings page!">
             <span class="mdi mdi-car"></span>
           </RouterLink>
-          <span class="mdi mdi-cat"></span>
+          <RouterLink :to="{ name: 'Job Listings' }" title="Go to the job listings page!">
+            <span class="mdi mdi-cat"></span>
+          </RouterLink>
           <h1 class="display-1">Gregslist</h1>
         </div>
       </div>
