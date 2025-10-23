@@ -16,6 +16,24 @@ const routes = [
     name: 'Car Listings',
     component: loadPage('CarsPage')
   },
+
+  {
+    path: '/houses',
+    name: 'House Listings',
+    component: loadPage('HousesPage')
+
+
+  },
+
+  {
+    path: '/houses/:houseId',
+    name: 'HouseDetails',
+    component: loadPage('HouseDetailsPage')
+
+  },
+
+  //why does creating these two paths get rid of the homepage?? 
+
   {
     path: '/account',
     name: 'Account',
