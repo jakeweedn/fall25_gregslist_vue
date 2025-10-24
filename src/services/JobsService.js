@@ -20,6 +20,11 @@ class JobsService {
         logger.log('deleting in the service')
 
     }
+
+    async createJob(jobData) {
+
+
+    }
 }
 
 export const jobsService = new JobsService()
