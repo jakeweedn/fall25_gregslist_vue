@@ -19,6 +19,10 @@ class HousesService {
 
     }
 
+    async deleteHouse(houseId) {
+
+        logger.log('Deleting house in the service')
+    }
 
 }
 
