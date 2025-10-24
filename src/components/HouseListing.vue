@@ -22,7 +22,7 @@ async function deleteHouse() {
 
     try {
         logger.log('Delete that house')
-        await housesService.deleteHouse(props.houseProp.description)
+        await housesService.deleteHouse(props.houseProp.id)
 
     }
     catch (error) {

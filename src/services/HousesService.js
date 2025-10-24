@@ -20,8 +20,23 @@ class HousesService {
     }
 
     async deleteHouse(houseId) {
+        const response = await api.delete(`api/houses/${houseId}`)
+        logger.log('DELETED HOUSE', response.data)
 
-        logger.log('Deleting house in the service')
+        const index = AppState.houses.findIndex(house => house.id == houseId)
+        AppState.houses.splice(index, 1)
+        //Am I not allowed to delete a house I didn't create?-correct 
+    }
+
+    async createHouse(houseData) {
+
+        //create house 
+        const response = await api.post('api/houses', houseData)
+        logger.log('CREATED HOUSE🏡', response.data)
+
+        //save to AppState
+        const house = new House(response.data)
+        AppState.houses.push(house)
     }
 
 }

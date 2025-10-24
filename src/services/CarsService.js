@@ -18,7 +18,7 @@ class CarsService {
     const index = AppState.cars.findIndex(car => car.id == carId)
     AppState.cars.splice(index, 1)
   }
-
+  //when back from break: why image won't show up? how to get submitted house to appear at top of page? 
   async createCar(carData) {
     const response = await api.post('api/cars', carData)
     logger.log('CREATED CAR', response.data)
