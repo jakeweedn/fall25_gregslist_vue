@@ -17,11 +17,26 @@ class JobsService {
     }
 
     async deleteJob(jobId) {
-        logger.log('deleting in the service')
+        const response = await api.delete(`api/jobs/${jobId}`)
+        logger.log('DELETED JOB👷‍♂️', response.data)
+
+        const index = AppState.jobs.findIndex(job => job.id == jobId)
+        AppState.jobs.splice(index, 1)
+
 
     }
 
     async createJob(jobData) {
+        //create job
+
+        const response = await api.post('api/jobs', jobData)
+        logger.log('Created job👷‍♂️', response.data)
+
+        //save to AppState
+
+        const job = new Job(response.data)
+        AppState.jobs.unshift(job)
+
 
 
     }

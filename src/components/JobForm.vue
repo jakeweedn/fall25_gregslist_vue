@@ -45,14 +45,36 @@ async function createJob() {
 
         </div>
 
+        <div>
+            <label for="job-title" class="form-label"> Job Title </label>
+            <input v-model="editableHouseData.jobTitle" id="job-title" class="form-control" type="text">
+
+        </div>
+
+        <div>
+            <label for="job-hours" class="form-label"> Job Hours </label>
+            <input v-model="editableHouseData.hours" id="job-hours" class="form-control" type="text">
+
+        </div>
+
+        <div>
+            <label for="job-rate" class="form-label"> Job Rate </label>
+            <input v-model="editableHouseData.rate" id="job-rate" class="form-control" type="text">
+
+        </div>
+
+        <div>
+            <label for="job-description" class="form-label"> Job Description </label>
+            <input v-model="editableHouseData.description" id="job-description" class="form-control" type="text">
+
+        </div>
+
+        <button class="my-2" type="submit"> Submit </button>
+
 
 
     </form>
 
-    To do when I come back:
-    1. Put form component in Jobs Page
-    2.Finish form
-    3.Finish function
 
 </template>
 

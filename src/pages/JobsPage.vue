@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import JobForm from '@/components/JobForm.vue';
 import JobListing from '@/components/JobListing.vue';
 import { jobsService } from '@/services/JobsService.js';
 import { logger } from '@/utils/Logger.js';
@@ -37,6 +38,8 @@ async function getJobs() {
 
 <template>
     <h1 class="text-center">Jobs</h1>
+
+    <JobForm />
 
     <div v-for="job in jobs" :key="job.id">
         <JobListing :jobProp="job" />
