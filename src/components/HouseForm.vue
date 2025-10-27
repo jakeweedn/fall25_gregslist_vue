@@ -59,52 +59,55 @@ async function createHouse() {
 <template>
     <form @submit.prevent="createHouse()" class="container-fluid">
 
-        <div>
+        <div class="col-md-9">
             <label for="house-description" class="form-label"> House Description </label>
-            <input v-model="editableHouseData.description" id="house-description" class="form-control" type="text">
+            <input v-model="editableHouseData.description" id="house-description" class="form-control" required
+                type="text">
 
         </div>
 
 
-        <div>
+        <div class="col-md-9">
             <label for="house-img-url" class="form-label"> House ImgUrl </label>
-            <input v-model="editableHouseData.imgUrl" id="house-img-url" class="form-control" type="url">
+            <input v-model="editableHouseData.imgUrl" id="house-img-url" class="form-control" required type="url">
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="bathrooms" class="form-label"> Bathrooms </label>
             <input v-model="editableHouseData.bathrooms" id="bathrooms" class="form-control" type="number">
 
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="bedrooms" class="form-label"> Bedrooms </label>
             <input v-model="editableHouseData.bedrooms" id="bedrooms" class="form-control" type="number">
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="house-levels" class="form-label"> House Levels </label>
-            <input v-model="editableHouseData.levels" id="house-levels" class="form-control" type="number">
+            <input v-model="editableHouseData.levels" id="house-levels" class="form-control" required min="1" max="20"
+                type="number">
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="house-year" class="form-label"> House Year </label>
-            <input v-model="editableHouseData.year" id="house-year" class="form-control" type="number">
+            <input v-model="editableHouseData.year" id="house-year" class="form-control" required minlength="4"
+                type="number">
 
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="house-price" class="form-label"> House Price </label>
-            <input v-model="editableHouseData.price" id="house-price" class="form-control" type="text">
+            <input v-model="editableHouseData.price" id="house-price" class="form-control" required type="text">
 
         </div>
 
-        <button type="submit"> Submit </button>
+        <button class="btn btn-primary my-2" type="submit"> Submit </button>
 
     </form>
 

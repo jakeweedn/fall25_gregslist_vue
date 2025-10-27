@@ -36,7 +36,7 @@ class HousesService {
 
         //save to AppState
         const house = new House(response.data)
-        AppState.houses.unshift(house)
+        AppState.houses.push(house)
         //unshift adds to beginning of array! 
     }
 

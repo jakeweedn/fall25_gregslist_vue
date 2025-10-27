@@ -2,6 +2,7 @@
 import { AppState } from '@/AppState.js';
 import JobForm from '@/components/JobForm.vue';
 import JobListing from '@/components/JobListing.vue';
+import ModalWrapper from '@/components/ModalWrapper.vue';
 import { jobsService } from '@/services/JobsService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -38,12 +39,22 @@ async function getJobs() {
 
 <template>
     <h1 class="text-center">Jobs</h1>
-
-    <JobForm />
-
-    <div v-for="job in jobs" :key="job.id">
-        <JobListing :jobProp="job" />
+    <div class="col-md-2 m-2">
+        <button v-if="account" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#job-form-modal"> List
+            your job
+        </button>
     </div>
+
+
+
+    <div v-for="job in jobs" :key="job.id" class="col-md-6 my-2">
+        <JobListing :jobProp="job" />
+
+    </div>
+
+    <ModalWrapper modalId="job-form-modal" modalTitle="Create job!">
+        <JobForm />
+    </ModalWrapper>
 
 </template>
 

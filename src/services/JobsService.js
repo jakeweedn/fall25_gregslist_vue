@@ -35,7 +35,7 @@ class JobsService {
         //save to AppState
 
         const job = new Job(response.data)
-        AppState.jobs.unshift(job)
+        AppState.jobs.push(job)
 
 
 

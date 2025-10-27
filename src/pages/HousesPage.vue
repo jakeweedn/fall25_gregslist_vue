@@ -2,6 +2,8 @@
 import { AppState } from '@/AppState.js';
 import HouseForm from '@/components/HouseForm.vue';
 import HouseListing from '@/components/HouseListing.vue';
+import HouseListingModal from '@/components/HouseListingModal.vue';
+import ModalWrapper from '@/components/ModalWrapper.vue';
 import { housesService } from '@/services/HousesService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
@@ -37,18 +39,34 @@ async function getHouses() {
 
 
 <template>
-    <h1> Houses </h1>
+    <h1 class="text-center"> Houses </h1>
+    <div class="col-md-2 m-2">
+        <button v-if="account" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#house-form-modal">
+            List your
+            house
 
-    <HouseForm />
+        </button>
+    </div>
+
+
+
 
     <div class="row">
-        <div v-for="house in houses" :key="house.id">
+        <div v-for="house in houses" :key="house.id" class="col-md-6 my-2">
 
             <HouseListing :houseProp="house" />
+            <HouseListingModal :modalId=house.id :modalTitle="house.description" :house="house" />
 
         </div>
 
+
+
     </div>
+
+    <ModalWrapper modalId="house-form-modal" modalTitle="Create house!">
+        <HouseForm />
+
+    </ModalWrapper>
 
 
 </template>

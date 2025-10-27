@@ -39,37 +39,38 @@ async function createJob() {
 
     <form @submit.prevent="createJob()" class="container-fluid">
 
-        <div>
+        <div class="col-md-6">
             <label for="job-company" class="form-label"> Job Company </label>
-            <input v-model="editableHouseData.company" id="job-company" class="form-control" type="text">
+            <input v-model="editableHouseData.company" id="job-company" class="form-control" required type="text">
 
         </div>
 
-        <div>
+        <div class="col-md-6">
             <label for="job-title" class="form-label"> Job Title </label>
-            <input v-model="editableHouseData.jobTitle" id="job-title" class="form-control" type="text">
+            <input v-model="editableHouseData.jobTitle" id="job-title" class="form-control" required type="text">
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="job-hours" class="form-label"> Job Hours </label>
-            <input v-model="editableHouseData.hours" id="job-hours" class="form-control" type="text">
+            <input v-model="editableHouseData.hours" id="job-hours" class="form-control" required type="text">
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="job-rate" class="form-label"> Job Rate </label>
-            <input v-model="editableHouseData.rate" id="job-rate" class="form-control" type="text">
+            <input v-model="editableHouseData.rate" id="job-rate" class="form-control" required type="text">
 
         </div>
 
-        <div>
+        <div class="col-md-3">
             <label for="job-description" class="form-label"> Job Description </label>
-            <input v-model="editableHouseData.description" id="job-description" class="form-control" type="text">
+            <input v-model="editableHouseData.description" id="job-description" class="form-control" required
+                type="text">
 
         </div>
 
-        <button class="my-2" type="submit"> Submit </button>
+        <button class=" btn btn-primary my-2" type="submit"> Submit </button>
 
 
 

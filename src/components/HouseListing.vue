@@ -5,6 +5,7 @@ import { housesService } from '@/services/HousesService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed } from 'vue';
+import HouseListingModal from './HouseListingModal.vue';
 
 
 const account = computed(() => AppState.account)
@@ -43,21 +44,32 @@ async function deleteHouse() {
 
     <div class="card house-border">
         <div class="card-start">
-            <a class="d-flex flex-row justify-content-between my-1">
-                <h1> {{ houseProp.description }} </h1>
+
+            <!-- Rember backticks! Could also do position absolute or position relative! -->
+            <!-- :style="{ backgroundImage: `url(${houseProp.imgUrl})` }" -->
+
+            <!-- <a class="d-flex flex-row justify-content-end my-1">
                 <button class="btn btn-danger rounded-pill mx-2" @click="deleteHouse()"> 🗑 </button>
-            </a>
-            <img :src=houseProp.imgUrl :alt="`${houseProp.creatorId}`">
+            </a> -->
+            <img class="img-fluid house-image" :src=houseProp.imgUrl :alt="`${houseProp.creatorId.name}`"
+                data-bs-toggle="modal" :data-bs-target="`#${houseProp.id}`">
         </div>
 
         <div class="card-body">
-            <section class="row justify-content-evenly">
+            <h1 class="text-center my-4"> {{ houseProp.description }} </h1>
+
+
+            <!-- Let's put all the below in a modal... -->
+
+
+            <!-- <section class="row justify-content-evenly">
                 <div class="col-md-2">
                     <h3 class="text-center">Stats: </h3>
                     <ul>
                         <li> Bathrooms: {{ houseProp.bathrooms }} </li>
                         <li> Bedrooms: {{ houseProp.bedrooms }}</li>
                         <li> Levels: {{ houseProp.levels }} </li>
+                        <li> Description: {{ houseProp.description }}</li>
                     </ul>
                 </div>
 
@@ -75,9 +87,21 @@ async function deleteHouse() {
 
                 </div>
 
-            </section>
+            </section> -->
 
+            <div class="d-flex flex-row justify-content-between card-end">
+
+                <p> Price: $ {{ houseProp.price }} </p>
+                <p> Posted by: {{ houseProp.creator?.name }} </p>
+            </div>
+
+            <a class="d-flex flex-row justify-content-end">
+                <button v-if="account?.id == houseProp.creatorId" class="btn btn-danger rounded-pill mx-2 delete-button"
+                    @click="deleteHouse()"> 🗑 </button>
+            </a>
         </div>
+
+
 
     </div>
 
@@ -91,11 +115,16 @@ async function deleteHouse() {
 
 <style lang="scss" scoped>
 .card-body {
-    background-color: skyblue;
+    background-color: violet;
+
 }
 
 .card-start {
     background-color: skyblue;
+}
+
+.card-footer {
+    background-color: violet;
 }
 
 .house-border {
@@ -105,6 +134,27 @@ async function deleteHouse() {
     //Remember what Jake taught me, specificity
 }
 
+.house-image {
+    max-height: 500px;
+    min-height: 500px;
+    min-width: 100%;
+    object-fit: cover;
 
 
-// .card.border</style>
+
+}
+
+.delete-button {
+    position: absolute;
+    top: 25px;
+
+    .card-end {
+        position: absolute;
+        bottom: 10px;
+    }
+
+
+
+
+}
+</style>

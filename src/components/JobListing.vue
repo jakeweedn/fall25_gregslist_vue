@@ -41,7 +41,7 @@ async function deleteJob() {
 
 <template>
     <div class="card job-border">
-        <div class="card-start d-flex flex-row justify-content-between">
+        <div class="card-start d-flex flex-row justify-content-between p-2">
 
             <h1> {{ jobProp.company }}, </h1>
             <h3> {{ jobProp.jobTitle }}</h3>
@@ -57,7 +57,8 @@ async function deleteJob() {
                     <li> ${{ jobProp.rate }} per hour </li>
 
                 </ul>
-                <button class="btn btn-danger rounded-pill" @click="deleteJob()"> 🗑 </button>
+                <button v-if="account.id == jobProp.creatorId" class="btn btn-danger rounded-pill" @click="deleteJob()">
+                    🗑 </button>
                 <!-- v-if="account?.id == jobProp.creatorId" -->
 
             </div>

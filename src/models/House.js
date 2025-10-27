@@ -12,9 +12,10 @@ export class House {
         this.price = data.price
         this.description = data.description
 
+        // this.creatorId = data.creatorId
         this.creatorId = data.creatorId
         this.id = data.id || data._id //don't understand this part 
-
+        this.creator = data.creator
     }
 
 
